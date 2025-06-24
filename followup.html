@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>متابعة المشرف</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f8ff;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #2d6a4f;
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    label {
+      font-weight: bold;
+      margin: 10px 0 5px;
+      display: block;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 150px; /* ✅ ارتفاع مريح */
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      resize: vertical;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      box-sizing: border-box;
+    }
+
+    .radio-group {
+      margin-bottom: 20px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .radio-option {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      background-color: #2d6a4f;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #245c42;
+    }
+
+    .success {
+      margin-top: 20px;
+      color: green;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .header-images {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .header-images img {
+      max-width: 80px;
+      height: auto;
+    }
+
+    .footer {
+      margin-top: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 12px;
+      color: #555;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+
+    .footer img {
+      width: 30px;
+      height: auto;
+    }
+
+    @media (max-width: 480px) {
+      h2 {
+        font-size: 1.2rem;
+      }
+      button {
+        font-size: 0.9rem;
+        padding: 10px;
+      }
+      textarea {
+        font-size: 1rem;
+        min-height: 120px; /* ✅ أصغر على الشاشات الصغيرة */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header-images">
+      <img src="https://i.ibb.co/B2tgwJc7/244185720-370792891415541-7314683137032448754-n.png" alt="صورة إضافية" />
+      <img src="https://i.ibb.co/Z662KmYG/image.png" alt="شعار جامعة الزقازيق" />
+    </div>
+
+    <h2>✏️ إضافة متابعة لبلاغ رقم <span id="serialDisplay"></span></h2>
+
+    <label>حادث بالغ الخطورة (حدث جسيم):</label>
+    <div class="radio-group">
+      <label class="radio-option">
+        <input type="radio" name="serious" value="نعم"> نعم
+      </label>
+      <label class="radio-option">
+        <input type="radio" name="serious" value="لا"> لا
+      </label>
+    </div>
+
+    <label for="followup">الإجراء التصحيحي المتخذ:</label>
+    <textarea id="followup" placeholder="أدخل الإجراء التصحيحي هنا..."></textarea>
+
+    <label for="preventive">الإجراء الوقائي:</label>
+    <textarea id="preventive" placeholder="أدخل الإجراء الوقائي هنا..."></textarea>
+
+    <button onclick="submitFollowup()">إرسال المتابعة</button>
+
+    <div class="success" id="result"></div>
+
+    <div class="footer">
+      <img src="https://i.ibb.co/Z662KmYG/image.png" alt="شعار الجامعة">
+      <div><strong>نظام الإبلاغ - وحدة الجودة - مستشفيات جامعة الزقازيق</strong></div>
+      <img src="https://i.ibb.co/Z662KmYG/image.png" alt="شعار الجامعة">
+    </div>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const serial = urlParams.get('serial');
+    document.getElementById('serialDisplay').textContent = serial;
+
+    function submitFollowup() {
+      const corrective = document.getElementById('followup').value.trim();
+      const preventive = document.getElementById('preventive').value.trim();
+      const seriousValue = document.querySelector('input[name="serious"]:checked');
+
+      if (!seriousValue) {
+        alert("يرجى تحديد ما إذا كان الحادث جسيمًا أم لا");
+        return;
+      }
+
+      if (!corrective) {
+        alert("يرجى كتابة الإجراء التصحيحي أولاً");
+        return;
+      }
+
+      if (!preventive) {
+        alert("يرجى كتابة الإجراء الوقائي أولاً");
+        return;
+      }
+
+      fetch("https://script.google.com/macros/s/AKfycbzVsA8VWV4FTjEUD6ppg3YZ0Ti4IJfd9IwD1EbScjbbWAyGz03m1Vo0YpMgNtCmD35Dgg/exec", {
+        method: "POST",
+        body: new URLSearchParams({
+          type: "followup",
+          serial: serial,
+          followup: corrective,
+          preventive: preventive,
+          serious: seriousValue.value
+        })
+      })
+      .then(res => res.text())
+      .then(txt => {
+        document.getElementById('result').textContent = txt;
+
+        // ✅ تفريغ الحقول إذا تم الحفظ بنجاح
+        if (txt.includes("تم حفظ المتابعة")) {
+          document.getElementById('followup').value = "";
+          document.getElementById('preventive').value = "";
+          const radios = document.querySelectorAll('input[name="serious"]');
+          radios.forEach(r => r.checked = false);
+        }
+      })
+      .catch(() => {
+        alert("حدث خطأ أثناء الإرسال، حاول مجددًا");
+      });
+    }
+  </script>
+</body>
+</html>

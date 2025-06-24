@@ -1,0 +1,359 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>نموذج الإبلاغ عن واقعة OVR</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+      margin: 0;
+    }
+
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 800px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #007bff;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .button-container {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 12px;
+      font-size: 18px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      flex: 1;
+    }
+
+    .submit-btn {
+      background: #007bff;
+      color: white;
+    }
+
+    .submit-btn:hover {
+      background: #0056b3;
+    }
+
+    .cancel-btn {
+      background: #dc3545;
+      color: white;
+    }
+
+    .cancel-btn:hover {
+      background: #c82333;
+    }
+
+    .logo-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .logo-container img {
+      height: 100px;
+      margin: 0 20px;
+      vertical-align: middle;
+    }
+
+    @media (max-width: 600px) {
+      form {
+        padding: 15px;
+      }
+
+      input, select, textarea, button {
+        font-size: 15px;
+      }
+
+      h2 {
+        font-size: 20px;
+      }
+
+      .logo-container img {
+        height: 80px;
+        margin: 10px;
+      }
+
+      .button-container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<form action="https://script.google.com/macros/s/AKfycbzVsA8VWV4FTjEUD6ppg3YZ0Ti4IJfd9IwD1EbScjbbWAyGz03m1Vo0YpMgNtCmD35Dgg/exec" method="post">
+
+  <div class="logo-container">
+    <img src="244185720_370792891415541_7314683137032448754_n.png" alt="شعار وحدة الجودة">
+    <img src="شعار_جامعة_الزقازيق.png" alt="شعار جامعة الزقازيق">
+  </div>
+
+  <h2>نموذج الإبلاغ عن واقعة OVR</h2>
+  <p style="text-align: center; color: #dc3545; font-weight: bold;">Confidential</p>
+
+  <label for="hospital_name">اسم المستشفى <span style="color:red">*</span></label>
+  <select id="hospital_name" name="اسم المستشفى" required onchange="toggleOther('hospital_name', 'other_hospital_div', 'other_hospital_input')">
+    <option value="" disabled selected>-- اختر اسم المستشفى --</option>
+    <option value="مستشفى الجراحة الجديد">مستشفى الجراحة الجديد</option>
+    <option value="مستشفى الطوارئ">مستشفى الطوارئ</option>
+    <option value="مستشفى الباطنة">مستشفى الباطنة</option>
+    <option value="العيادات الخارجية">العيادات الخارجية</option>
+    <option value="مستشفى النسا والولادة">مستشفى النسا والولادة</option>
+    <option value="أخرى">أخرى</option>
+  </select>
+  <div id="other_hospital_div" style="display:none; margin-top: 10px;">
+    <label for="other_hospital_input">يرجى تحديد اسم المستشفى:</label>
+    <input type="text" id="other_hospital_input" name="اسم مستشفى آخر" />
+  </div>
+
+  <label for="reporter_type">نوع المُبلِّغ <span style="color: red;">*</span></label>
+  <select id="reporter_type" name="نوع المُبلِّغ" required onchange="toggleOther('reporter_type', 'other_reporter_div', 'other_reporter_input')">
+    <option value="" disabled selected>-- اختر نوع المُبلِّغ --</option>
+    <option value="دكتور">دكتور</option>
+    <option value="صيدلي">صيدلي</option>
+    <option value="ممرض">ممرض</option>
+    <option value="فني">فني</option>
+    <option value="موظف">موظف</option>
+    <option value="أخرى">أخرى</option>
+  </select>
+  <div id="other_reporter_div" style="display:none; margin-top: 10px;">
+    <label for="other_reporter_input">يرجى تحديد نوع المُبلِّغ:</label>
+    <input type="text" id="other_reporter_input" name="نوع مبلغ آخر" />
+  </div>
+
+  <label for="reporter_name">الاسم(اختياري)</label>
+  <input type="text" id="reporter_name" name="الاسم(اختياري)" />
+
+  <label for="phone">رقم الهاتف(اختياري)</label>
+  <input type="tel" id="phone" name="رقم الهاتف(اختياري)" />
+
+  <label for="injured_person_type">الشخص المصاب<span style="color: red;">*</span></label>
+  <select id="injured_person_type" name="الشخص المصاب" required onchange="toggleInjuredPerson('injured_person_type')">
+    <option value="" disabled selected>-- اختر نوع الشخص المصاب --</option>
+    <option value="مريض">مريض</option>
+    <option value="موظف">موظف</option>
+    <option value="زائر">زائر</option>
+    <option value="أخرى">أخرى</option>
+  </select>
+
+  <!-- حقول المريض - تظهر فقط عند اختيار "مريض" -->
+  <div id="patient_fields_div" style="display:none; margin-top: 10px;">
+    <label for="patient_full_name">اسم المريض رباعي <span style="color: red;">*</span></label>
+    <input type="text" id="patient_full_name" name="اسم المريض رباعي" />
+    
+    <label for="medical_file_number">رقم الملف الطبي <span style="color: red;">*</span></label>
+    <input type="text" id="medical_file_number" name="رقم الملف الطبي" />
+  </div>
+
+  <!-- حقول الموظف - تظهر فقط عند اختيار "موظف" -->
+  <div id="employee_fields_div" style="display:none; margin-top: 10px;">
+    <label for="employee_name">اسم الموظف<span style="color: red;">*</span></label>
+    <input type="text" id="employee_name" name="اسم الموظف" />
+    
+    <label for="employee_department">القسم<span style="color: red;">*</span></label>
+    <input type="text" id="employee_department" name="القسم" />
+    
+    <label for="employee_position">الوظيفة<span style="color: red;">*</span></label>
+    <input type="text" id="employee_position" name="الوظيفة" />
+  </div>
+
+  <label for="incident_datetime">تاريخ ووقت الواقعة <span style="color: red;">*</span></label>
+  <input type="datetime-local" id="incident_datetime" name="تاريخ ووقت الواقعة" required />
+
+  <label for="incident_location">مكان الواقعة <span style="color: red;">*</span></label>
+  <select id="incident_location" name="مكان الواقعة" required onchange="toggleOther('incident_location', 'other_location_div', 'other_location_input')">
+    <option value="" disabled selected>-- اختر مكان الواقعة --</option>
+    <option value="عمليات أ">عمليات أ</option>
+    <option value="عمليات ب">عمليات ب</option>
+    <option value="عناية الثاني">عناية الثاني</option>
+    <option value="عناية الثالث">عناية الثالث</option>
+    <option value="عناية زرع الكبد">عناية زرع الكبد</option>
+    <option value="وحدة زرع الكبد">وحدة زرع الكبد</option>
+    <option value="قسم الجراحة">قسم الجراحة</option>
+    <option value="قسم الروماتيزم">قسم الروماتيزم</option>
+    <option value="قسم جراحة المسالك البولية">قسم جراحة المسالك البولية</option>
+    <option value="قسم مخ واعصاب باطنة">قسم مخ واعصاب باطنة</option>
+    <option value="قسم جراحة المخ والاعصب والعمود الفقري">قسم جراحة المخ والاعصب والعمود الفقري</option>
+    <option value="قسم جراحة اذن وانف وحنجرة">قسم جراحة اذن وانف وحنجرة</option>
+    <option value="قسم جراحة النسا">قسم جراحة النسا</option>
+    <option value="صيدلية العلاج المجاني">صيدلية العلاج المجاني</option>
+    <option value="صيدلية العلاج الاقتصادي">صيدلية العلاج الاقتصادي</option>
+    <option value="صيدلية المستلزمات المجاني">صيدلية المستلزمات المجاني</option>
+    <option value="صيدلية المستلزمات الاقتصادي">صيدلية المستلزمات الاقتصادي</option>
+    <option value="صيدلية العناية والعمليات">صيدلية العناية والعمليات</option>
+    <option value="الصيدلية المركزية">الصيدلية المركزية</option>
+    <option value="قسم الاشعة والقسطرة">قسم الاشعة والقسطرة</option>
+    <option value="وحدة السمعيات">وحدة السمعيات</option>
+    <option value="أخرى">أخرى</option>
+  </select>
+  <div id="other_location_div" style="display:none; margin-top: 10px;">
+    <label for="other_location_input">يرجى تحديد مكان الواقعة:</label>
+    <input type="text" id="other_location_input" name="مكان واقعة آخر" />
+  </div>
+
+  <label for="error_type">نوع الخطأ <span style="color: red;">*</span></label>
+  <select id="error_type" name="نوع الخطأ" required onchange="toggleOther('error_type', 'other_error_div', 'other_error_input')">
+    <option value="" disabled selected>-- اختر نوع الخطأ --</option>
+    <option value="دوائي">دوائي</option>
+    <option value="جراحي">جراحي</option>
+    <option value="تحاليل">تحاليل</option>
+    <option value="نقل الدم">نقل الدم</option>
+    <option value="الاشعة او العمل">الاشعة او العمل</option>
+    <option value="اصابة المريض">اصابة المريض</option>
+    <option value="اصابة موظف او زائر">اصابة موظف او زائر</option>
+    <option value="سقوط">سقوط</option>
+    <option value="مخالفة المعايير الوقائية">مخالفة المعايير الوقائية</option>
+    <option value="خطأ بالملف الطبي">خطأ بالملف الطبي</option>
+    <option value="شكاوى المرضى">شكاوى المرضى</option>
+    <option value="سلامة المرضى">سلامة المرضى</option>
+    <option value="سلوك">سلوك</option>
+    <option value="أخرى">أخرى</option>
+  </select>
+  <div id="other_error_div" style="display:none; margin-top: 10px;">
+    <label for="other_error_input">يرجى تحديد نوع الخطأ:</label>
+    <input type="text" id="other_error_input" name="نوع خطأ آخر" />
+  </div>
+
+  <label for="incident_description">وصف الواقعة <span style="color: red;">*</span></label>
+  <textarea id="incident_description" name="وصف الواقعة" rows="4" required></textarea>
+
+  <label for="recommendations">التوصيات أو الإجراءات المقترحة</label>
+  <textarea id="recommendations" name="التوصيات أو الإجراءات المقترحة" rows="3"></textarea>
+
+  <div class="button-container">
+    <button type="submit" class="submit-btn">إرسال</button>
+    <button type="button" class="cancel-btn" onclick="resetForm()">إلغاء</button>
+  </div>
+</form>
+
+<script>
+  function toggleOther(selectId, divId, inputId) {
+    var value = document.getElementById(selectId).value;
+    var otherDiv = document.getElementById(divId);
+    var otherInput = document.getElementById(inputId);
+
+    if (value === "أخرى") {
+      otherDiv.style.display = "block";
+      otherInput.setAttribute("required", "required");
+    } else {
+      otherDiv.style.display = "none";
+      otherInput.removeAttribute("required");
+      otherInput.value = "";
+    }
+  }
+
+  function toggleInjuredPerson(selectId) {
+    var value = document.getElementById(selectId).value;
+    var patientFieldsDiv = document.getElementById('patient_fields_div');
+    var patientNameInput = document.getElementById('patient_full_name');
+    var medicalFileInput = document.getElementById('medical_file_number');
+    var employeeFieldsDiv = document.getElementById('employee_fields_div');
+    var employeeNameInput = document.getElementById('employee_name');
+    var employeeDepartmentInput = document.getElementById('employee_department');
+    var employeePositionInput = document.getElementById('employee_position');
+
+    // إخفاء جميع الحقول أولاً
+    patientFieldsDiv.style.display = "none";
+    employeeFieldsDiv.style.display = "none";
+    
+    // إزالة خاصية required من جميع الحقول
+    patientNameInput.removeAttribute("required");
+    medicalFileInput.removeAttribute("required");
+    employeeNameInput.removeAttribute("required");
+    employeeDepartmentInput.removeAttribute("required");
+    employeePositionInput.removeAttribute("required");
+    
+    // مسح القيم
+    patientNameInput.value = "";
+    medicalFileInput.value = "";
+    employeeNameInput.value = "";
+    employeeDepartmentInput.value = "";
+    employeePositionInput.value = "";
+
+    if (value === "مريض") {
+      patientFieldsDiv.style.display = "block";
+      patientNameInput.setAttribute("required", "required");
+      medicalFileInput.setAttribute("required", "required");
+    } else if (value === "موظف") {
+      employeeFieldsDiv.style.display = "block";
+      employeeNameInput.setAttribute("required", "required");
+      employeeDepartmentInput.setAttribute("required", "required");
+      employeePositionInput.setAttribute("required", "required");
+    }
+  }
+
+  function resetForm() {
+    // منع إرسال النموذج
+    event.preventDefault();
+    
+    if (confirm("هل أنت متأكد من أنك تريد إلغاء النموذج؟ سيتم فقدان جميع البيانات المدخلة.")) {
+      // إعادة تعيين النموذج
+      document.querySelector('form').reset();
+      
+      // إخفاء جميع الحقول الإضافية
+      document.getElementById('other_hospital_div').style.display = 'none';
+      document.getElementById('other_reporter_div').style.display = 'none';
+      document.getElementById('patient_fields_div').style.display = 'none';
+      document.getElementById('employee_fields_div').style.display = 'none';
+      document.getElementById('other_location_div').style.display = 'none';
+      document.getElementById('other_error_div').style.display = 'none';
+      
+      // إزالة خاصية required من الحقول الإضافية
+      document.getElementById('other_hospital_input').removeAttribute('required');
+      document.getElementById('other_reporter_input').removeAttribute('required');
+      document.getElementById('patient_full_name').removeAttribute('required');
+      document.getElementById('medical_file_number').removeAttribute('required');
+      document.getElementById('employee_name').removeAttribute('required');
+      document.getElementById('employee_department').removeAttribute('required');
+      document.getElementById('employee_position').removeAttribute('required');
+      document.getElementById('other_location_input').removeAttribute('required');
+      document.getElementById('other_error_input').removeAttribute('required');
+      
+      // رسالة تأكيد
+      alert("تم إلغاء النموذج بنجاح.");
+    }
+    
+    // التأكد من عدم إرسال النموذج
+    return false;
+  }
+</script>
+
+</body>
+</html>
